@@ -1,0 +1,13 @@
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-Regular.ttf') format('truetype'); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-Italic.ttf') format('truetype'); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-Medium.ttf') format('truetype'); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-SemiBold.ttf') format('truetype'); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-Bold.ttf') format('truetype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Gontserrat'; src:url('Gontserrat-ExtraBold.ttf') format('truetype'); font-weight:800; font-style:normal; font-display:swap; }
+@font-face { font-family:'Creato Display'; src:url('CreatoDisplay-Bold.otf') format('opentype'); font-weight:700; font-style:normal; font-display:swap; }
+@font-face { font-family:'Creato Display'; src:url('CreatoDisplay-Black.otf') format('opentype'); font-weight:800; font-style:normal; font-display:swap; }
+
+:root {
+    --font-sans: 'Gontserrat', system-ui, -apple-system, sans-serif;
+    --font-display: 'Creato Display', 'Gontserrat', system-ui, -apple-system, sans-serif;
+}

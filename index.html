@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://global.media.stux.dev/icon.png">
+    <meta name="description" content="Stux.Dev — Service Page">
+    <title>Stux.Dev — Service Page</title>
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --font-sans: 'Gontserrat', system-ui, -apple-system, sans-serif;
+            --font-display: 'Creato Display', 'Gontserrat', system-ui, -apple-system, sans-serif;
+            --orange: #FD6602; --orange-bright: #FF8A3D;
+            --radius-sm: 6px; --radius-md: 12px; --radius-lg: 18px; --radius-xl: 26px;
+            --ease: cubic-bezier(0.4, 0, 0.2, 1); --dur: 160ms;
+        }
+        [data-theme="dark"] {
+            --bg: #120D08; --bg-surface: #1A130B; --bg-card: #201810; --bg-elevated: #261D13;
+            --border: rgba(253,102,2,0.09); --border-mid: rgba(253,102,2,0.18); --border-strong: rgba(253,102,2,0.34);
+            --text: #F2E9E2; --text-muted: #94806A;
+            --hero-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(253,102,2,0.09), transparent);
+            --badge-bg: rgba(253,102,2,0.12); --badge-border: rgba(253,102,2,0.22); --btn-text: #1A0D02;
+        }
+        [data-theme="light"] {
+            --bg: #FBF6F4; --bg-surface: #FFFFFF; --bg-card: #FFFFFF; --bg-elevated: #F7EDE7;
+            --border: rgba(253,102,2,0.12); --border-mid: rgba(253,102,2,0.25); --border-strong: rgba(253,102,2,0.45);
+            --text: #2A1A0F; --text-muted: #6B4A3A;
+            --hero-glow: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(253,102,2,0.08), transparent);
+            --badge-bg: rgba(253,102,2,0.10); --badge-border: rgba(253,102,2,0.20); --btn-text: #FFFFFF;
+        }
+
+        html, body {
+            background: var(--bg); color: var(--text); font-family: var(--font-sans);
+            min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; transition: background 0.3s, color 0.3s;
+        }
+        body::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 60vh; background: var(--hero-glow); pointer-events: none; }
+
+        a, a:visited { color: var(--orange); text-decoration: none; }
+        a:hover, a:focus { opacity: 0.8; }
+
+        .wrapper { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 2rem 1.5rem; max-width: 600px; width: 100%; }
+
+        .logo { margin-bottom: 2rem; }
+        .logo img { max-height: 68px; height: auto; width: auto; }
+        .logo a { display: inline-block; opacity: 0.92; transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+        .logo a:hover { opacity: 1; transform: scale(1.03); }
+
+        .badge {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--badge-bg); border: 1px solid var(--badge-border);
+            border-radius: 100px; padding: 6px 16px 6px 12px; font-size: 12px; font-weight: 600; color: var(--orange);
+            letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2rem;
+        }
+        .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: blink 2.2s ease-in-out infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        h1 {
+            font-family: var(--font-display); font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 800;
+            line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 1rem;
+        }
+        h1 em { font-style: normal; color: var(--orange); }
+        .tagline { color: var(--text-muted); font-size: 0.98rem; line-height: 1.7; max-width: 460px; margin: 0 auto 2.25rem; }
+
+        .card {
+            width: 100%; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl);
+            padding: 1.75rem 2rem; margin-bottom: 2.5rem;
+        }
+        .card-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; text-transform: uppercase; text-align: left; margin-bottom: 1rem; }
+        .btn-list { display: flex; flex-direction: column; gap: 10px; }
+        .btn-list a {
+            display: flex; align-items: center; gap: 10px; padding: 11px 16px; border-radius: var(--radius-md); justify-content: center;
+            font-size: 14px; font-weight: 500; border: 1px solid var(--border-mid); background: var(--badge-bg); color: var(--orange);
+            transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+        }
+        .btn-list a:hover { border-color: var(--border-strong); opacity: 1; }
+        .btn-list a svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+        #theme-toggle {
+            position: fixed; top: 14px; right: 14px; z-index: 100; background: var(--badge-bg); border: 1px solid var(--badge-border);
+            border-radius: 50%; width: 38px; height: 38px; font-size: 15px; text-align: center; cursor: pointer;
+            padding: 0; color: var(--orange); display: flex; align-items: center; justify-content: center; transition: background var(--dur) var(--ease);
+        }
+        #theme-toggle:hover { opacity: 0.85; }
+
+        .footer-links { font-size: 0.8rem; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle light/dark mode">&#9788;</button>
+
+    <div class="wrapper">
+        <div class="badge">
+            <span class="badge-dot"></span>
+            No Service Here
+        </div>
+
+        <div class="logo">
+            <a href="https://stux.dev" target="_blank" rel="noopener" title="Stux.Dev">
+                <img src="https://global.media.stux.dev/logo.png" alt="Stux.Dev Logo" title="Stux.Dev Logo">
+            </a>
+        </div>
+
+        <h1>This service hasn't<br>been <em>set up yet.</em></h1>
+        <p class="tagline">Whoever runs this service hasn't set it up yet. Check back soon, or get in touch if that's you.</p>
+
+        <div class="card">
+            <p class="card-label">In the meantime</p>
+            <div class="btn-list">
+                <a href="mailto:hello@stux.dev" title="Email Stux.Dev">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="4" width="20" height="16" rx="2" />
+                        <polyline points="2,4 12,13 22,4" />
+                    </svg>
+                    Contact Us
+                </a>
+                <a href="https://stux.dev" target="_blank" rel="noopener" title="Browse Stux.Dev">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20M12 2a15 15 0 010 20 15 15 0 010-20z" />
+                    </svg>
+                    Browse Stux.Dev
+                </a>
+            </div>
+        </div>
+
+        <p class="footer-links">
+            <a href="changelog" id="version-link">Changelog</a>
+            &middot;
+            <a href="legal">Boring Legal Stuff</a>
+        </p>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var btn = document.getElementById('theme-toggle');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('stuxdev-theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+
+            function apply(dark) {
+                root.setAttribute('data-theme', dark ? 'dark' : 'light');
+                btn.textContent = dark ? '☀' : '☾';
+                btn.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+            }
+
+            apply(isDark);
+
+            btn.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('stuxdev-theme', isDark ? 'dark' : 'light');
+                apply(isDark);
+            });
+        })();
+    </script>
+    <script>
+        if (window.parent !== window) {
+            var parentOrigin = document.referrer ? new URL(document.referrer).origin : "*";
+            window.parent.postMessage(
+                { type: "page-title", title: document.title },
+                parentOrigin
+            );
+        }
+    </script>
+    <script>
+        fetch('VERSION.md')
+            .then(function (r) { return r.text(); })
+            .then(function (v) {
+                document.getElementById('version-link').textContent = 'v' + v.trim();
+            })
+            .catch(function () {});
+    </script>
+</body>
+</html>

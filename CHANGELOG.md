@@ -5,6 +5,11 @@ All notable changes to Service Page are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH).
 
+## v1.0.2
+
+### Fixed
+- The footer's changelog/version link (and other footer links) turned accent-purple once visited — `a:visited` carries a pseudo-class, giving it higher CSS specificity than the plain `footer a` selector meant to keep footer links muted, so it kept winning regardless of source order. Every affected footer link now also styles `footer a:visited` explicitly.
+
 ## v1.0.1
 
 ### Fixed

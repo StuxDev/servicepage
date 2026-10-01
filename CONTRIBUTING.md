@@ -18,6 +18,7 @@ a local static server pointed at the directory. Then open
 ## Project conventions
 
 - Static HTML pages (`index.html`, `legal.html` + `legal/`, `changelog.html`, `404.html`) — no framework, no build step, no backend.
+- The sitemap (`sitemap.xml`, `sitemap/index.html`, `robots.txt`) is generated: after adding or removing a page, edit the `PAGES` list in `scripts/build-sitemap.py` and run `python scripts/build-sitemap.py`, then commit the result
 - Keep it lightweight and dependency-free; Gontserrat and Creato Display are self-hosted under `assets/fonts/`, matching Stux.Dev's actual tools (Stuxs.Tools, Downl.one), not pulled from a third-party CDN.
 - `changelog.html` fetches and renders `CHANGELOG.md` at runtime — don't hand-duplicate changelog content into it.
 - General contact uses `hello@stux.dev`; legal-page contact uses `legal@stux.dev`.

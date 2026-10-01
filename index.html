@@ -7,6 +7,40 @@
     <meta name="description" content="Stux.Dev — Service Page">
     <title>Stux.Dev — Service Page</title>
     <link rel="stylesheet" href="assets/fonts/fonts.css">
+    <link rel="stylesheet" href="assets/site-banner.css">
+    <!-- Dev banner: only when opened locally (dev-server). ?banner=soon,maintenance,site previews
+         the others. Production (GitHub Pages) never shows it. -->
+    <script>
+        (function () {
+            var h = location.hostname;
+            if (h !== 'localhost' && h !== '127.0.0.1' && h !== '[::1]') return;
+            var copy = {
+                maintenance: ['Maintenance', 'Stux.Dev is being updated and will be back shortly.'],
+                soon: ['Coming soon', 'Stux.Dev is launching soon.'],
+                dev: ['Dev mode', 'Local preview of Stux.Dev. Open it on its GitHub Pages address to see it as production does.'],
+                site: ['Notice', 'A site notice for Stux.Dev appears here.']
+            };
+            var want = (new URLSearchParams(location.search).get('banner') || '').split(',');
+            var order = ['maintenance', 'soon', 'dev', 'site'];
+            var show = order.filter(function (v) { return v === 'dev' || want.indexOf(v) !== -1; });
+            document.documentElement.classList.add('has-site-banner', 'site-banner-fixed');
+            document.addEventListener('DOMContentLoaded', function () {
+                var box = document.createElement('div');
+                box.className = 'site-banners site-banners--fixed';
+                box.setAttribute('data-site-banners', '');
+                show.forEach(function (v) {
+                    var b = document.createElement('div');
+                    b.className = 'site-banner site-banner--' + v;
+                    b.setAttribute('role', v === 'dev' ? 'note' : 'status');
+                    var l = document.createElement('span'); l.className = 'site-banner-label'; l.textContent = copy[v][0];
+                    var t = document.createElement('span'); t.className = 'site-banner-text'; t.textContent = copy[v][1];
+                    b.appendChild(l); b.appendChild(t); box.appendChild(b);
+                });
+                document.body.insertBefore(box, document.body.firstChild);
+                var s = document.createElement('script'); s.src = 'assets/site-banner.js'; document.body.appendChild(s);
+            });
+        })();
+    </script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -85,6 +119,35 @@
         #theme-toggle:hover { opacity: 0.85; }
 
         .footer-links { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Site banner (dev only: shown when the page is opened from localhost). The page body is a
+           centred flex box that doesn't scroll, so the banner is fixed and the page moves down. */
+        .site-banners { --banner-page-bg: var(--bg); --banner-text: var(--text); --banner-site: #FF8A3D; --banner-site-light: #B34700; }
+        :root.has-site-banner.site-banner-fixed body { padding-top: var(--banner-h); }
+        :root.has-site-banner #theme-toggle { top: calc(14px + var(--banner-h)); }
+
+        /* "Stux.Dev | A Stux.Dev Service": muted until hovered or focused. (GitHub Pages site: no
+           Powered by Stuxedo badge.) */
+        .powered { display: flex; align-items: center; justify-content: center; gap: .6rem; flex-wrap: wrap; margin-top: 1.25rem; font-size: 0.8rem; }
+        .powered-item, .powered-item:visited { display: inline-flex; align-items: center; color: var(--text-muted); transition: color .2s; }
+        .powered-item:hover, .powered-item:focus-visible { color: var(--text); opacity: 1; }
+        .powered-sep { color: var(--border-strong); }
+        .powered-logo { height: 28px; width: auto; display: block;
+            /* Same filter functions in every state, so the hover animates without the image snapping. */
+            filter: grayscale(1) brightness(1); opacity: .7; transition: filter .2s ease, opacity .2s ease;
+            will-change: filter, opacity; backface-visibility: hidden; transform: translateZ(0); }
+        [data-theme="light"] .powered-logo { filter: grayscale(1) brightness(.6); }
+        .powered-item:hover .powered-logo, .powered-item:focus-visible .powered-logo { filter: grayscale(0) brightness(1); opacity: 1; }
+        .made { margin-top: .75rem; font-size: 0.8rem; color: var(--text-muted); }
+        .made a, .made a:visited { color: var(--text-muted); transition: color .2s; }
+        .made a:hover, .made a:focus-visible { color: var(--text); opacity: 1; }
+        .made-icon { display: inline-block; vertical-align: -2px; }
+        .made-love { color: #e5484d; }
+        .made-code { color: #30a46c; }
+        .made-coffee { color: #a0703f; }
+        .copy-glyph { display: inline-block; vertical-align: -1px; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        @media (prefers-reduced-motion: reduce) { .powered-item, .powered-logo, .made a { transition: none; } }
     </style>
 </head>
 <body>
@@ -129,7 +192,18 @@
             <a href="changelog" id="version-link">Changelog</a>
             &middot;
             <a href="legal">Boring Legal Stuff</a>
+            &middot;
+            <a href="sitemap/">Sitemap</a>
         </p>
+        <div class="powered">
+            <a href="https://stux.dev" class="powered-item" target="_blank" rel="noopener">
+                <img src="https://global.media.stux.dev/logo.png" alt="Stux.Dev" title="Stux.Dev" class="powered-logo" height="28">
+            </a>
+            <span class="powered-sep" aria-hidden="true">|</span>
+            <a href="https://services.stux.dev" class="powered-item" target="_blank" rel="noopener">A Stux.Dev Service</a>
+        </div>
+        <p class="made">Created with <svg class="made-icon made-love" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><title>Love</title><path fill="currentColor" d="M12 21.2 10.6 20C5.4 15.3 2 12.2 2 8.4 2 5.3 4.4 3 7.4 3c1.7 0 3.4.8 4.6 2.1C13.2 3.8 14.9 3 16.6 3 19.6 3 22 5.3 22 8.4c0 3.8-3.4 6.9-8.6 11.6z"/></svg> / <svg class="made-icon made-code" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><title>Code</title><path fill="currentColor" d="M8.3 6.3 9.7 7.7 5.4 12l4.3 4.3-1.4 1.4L2.6 12zm7.4 0L21.4 12l-5.7 5.7-1.4-1.4 4.3-4.3-4.3-4.3zM13.6 3.7l1.9.6-5 16-1.9-.6z"/></svg> / <svg class="made-icon made-coffee" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false"><title>Coffee</title><path fill="currentColor" d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5zm14 1.5h1.5a2.5 2.5 0 0 1 0 5H17v-2h1.5a.5.5 0 0 0 0-1H17zM6 2h2v4H6zm4 0h2v4h-2zM2 20h16v2H2z"/></svg><span class="sr-only"> love, code and coffee</span>
+            by <a href="https://stux.dev" target="_blank" rel="noopener">Stux.Dev</a></p>
     </div>
 
     <script>

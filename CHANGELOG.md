@@ -5,6 +5,16 @@ All notable changes to Service Page are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH).
 
+## v1.1.0
+
+### Added
+- A dev-mode banner, the shared Stux site banner (`assets/site-banner.css` + `assets/site-banner.js`), shown only when the page is opened from localhost (`dev-server.sh`/`.bat`); `?banner=soon,maintenance,site` previews the other banner types locally, and the live site never shows one. It sits above the page without covering it
+- The footer brand row on the main page: the Stux.Dev logo, "A Stux.Dev Service" (linking to services.stux.dev), 28px tall and grey until hovered or focused, plus a "Created with love / code / coffee by Stux.Dev" line. This site is on GitHub Pages, so there is no Powered by Stuxedo badge
+- `/sitemap` (an HTML page in the site's layout listing every page) and `sitemap.xml`, committed as static files and regenerated with `python scripts/build-sitemap.py` (`lastmod` comes from each page's last git commit); `robots.txt` points at it and the footer links to it
+
+### Changed
+- The copyright symbol on the legal pages is a small inline SVG glyph, with a visually hidden "Copyright" so screen readers still read it
+
 ## v1.0.3
 
 ### Changed

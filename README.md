@@ -47,5 +47,5 @@ This project is open source and available for use and modification.
 
 ---
 
-*Built & Maintained by <img src="https://global.media.stux.dev/icon.png" height="14" alt="Stux.Dev" valign="middle"> [Stux.Dev](https://github.com/StuxDev).
-Stux.Dev is operated by Stux Group Ltd, a company registered in England and Wales (company no. 13160574), registered office 82a James Carter Road, Mildenhall, England, IP28 7DE.*
+*Built & Maintained by <img src="https://global.media.stux.dev/icon.png" height="14" alt="Stux.Dev" valign="middle"> [Stux.Dev](https://github.com/StuxDev), Hosted by <img src="https://github.com/Stuxedo.png" height="14" alt="Stuxedo" valign="middle"> [Stuxedo](https://stuxedo.com).  
+Stux.Dev is a part of the <img src="https://global.media.stux.group/icon.png" height="14" alt="Stux.Group" valign="middle"> Stux.Group brand of businesses.*

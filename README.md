@@ -41,6 +41,10 @@ This project uses GitHub Pages and can be automatically deployed to your desired
 
 The live version is deployed at [servicepage.stux.dev](https://servicepage.stux.dev).
 
+## Link previews and icons
+
+Every page except the 404 page carries a Discord link preview (a `discord:component-embed` script in its `<head>`), built by `python scripts/build-discord-embeds.py`. The favicon set (`favicon.ico`, `apple-touch-icon.png`, `site.webmanifest` and the icons in `assets/img/`) is linked from every page. `bash tests/site.sh` checks both.
+
 ## Versioning
 
 This project uses [Date Versioning](https://datevers.ing): each release is numbered by its UTC release date as `YY.MM.DD` (for example `26.10.23`), with `-1`, `-2`… for later releases the same day. See [CHANGELOG.md](CHANGELOG.md) for what changed in each release.

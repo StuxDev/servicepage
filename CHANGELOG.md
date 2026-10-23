@@ -5,6 +5,14 @@ All notable changes to Service Page are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.10.23-1
+
+### Added
+
+- Discord link previews: every page except the 404 page carries a `discord:component-embed` block in its `<head>`, in the Stux.Dev orange (`#FD6602`) with the Stux.Dev icon. The home page says what this placeholder is and links to Stux.Dev and all services; the changelog, the legal hub and the other pages get their own preview. The blocks are pre-built and committed by `python scripts/build-discord-embeds.py` (which `build-sitemap.py` now runs too), page text is escaped so it shows as plain text, a preview over Discord's 3,000-byte limit is left out, and the page title and description stay as the fallback
+- A full favicon set generated from the Stux.Dev icon: `favicon.ico` (16, 32 and 48px), `apple-touch-icon.png` (on a white background, so iOS doesn't fill it with black) and `site.webmanifest` with 192px, 512px and maskable 512px icons, linked from every page, the 404 page included
+- `tests/site.sh`, which checks every Discord preview (valid JSON, under 3,000 bytes, none on the 404 page), the favicon files and sizes, the manifest, and the icon tags in every `<head>`; CI now runs it and `tests/version.sh`
+
 ## v26.10.23
 
 ### Added

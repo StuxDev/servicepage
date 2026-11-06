@@ -25,6 +25,12 @@ a local static server pointed at the directory. Then open
 - This is a single page, not a soonpage/maintenancepage pair — a service either has been set up or it hasn't; there's no separate "under maintenance" state to design for.
 - Match the existing code style: no comments explaining *what* the markup does, only *why* when something is genuinely non-obvious.
 
+## Branches
+
+- Work on `test`, or on a feature branch off it. Never push to `main`
+- Changes reach `main` only through a pull request from `test` into `main`, which needs CI to pass and is reviewed and merged by Leo
+- Merging into `main` deploys the site to GitHub Pages. Release commits and tags are made on `test` (`git push origin test --tags`) and go live when the pull request is merged
+
 ## Versioning
 
 This project uses [Date Versioning](https://datevers.ing). To release:
@@ -33,6 +39,7 @@ This project uses [Date Versioning](https://datevers.ing). To release:
 2. Set `VERSION.md` to the same bare version (no `v`): today's **UTC** date as `YY.MM.DD`, or `YY.MM.DD-1`, `-2`… for later releases the same UTC day. Never a future date. Use UTC, not local time: just after midnight in the UK it is still the previous day in UTC.
 3. Run `bash tests/version.sh` and `bash tests/site.sh`. If you change a page's `<title>` or description, run `python scripts/build-discord-embeds.py` first to refresh its Discord preview (`python scripts/build-sitemap.py` does that too).
 4. Run `./commit.sh` (or `commit.bat` on Windows). It checks the version, commits and tags `vYY.MM.DD`, and never pushes.
+5. Push `test` with its tags (`git push origin test --tags`) and open a pull request from `test` into `main`.
 
 ## Before committing
 

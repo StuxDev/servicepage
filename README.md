@@ -2,7 +2,7 @@
   <picture><source media="(prefers-color-scheme: dark)" srcset="https://global.media.stux.dev/logo-light.png"><source media="(prefers-color-scheme: light)" srcset="https://global.media.stux.dev/logo-dark.png"><img src="https://global.media.stux.dev/logo-dark.png" height="100" alt="Stux.Dev Logo"></picture>
 </p>
 
-# Service Page
+# Stux.Dev Servicepage
 
 A clean and simple placeholder page for a Stux.Dev service that hasn't been set up yet.
 
@@ -16,6 +16,7 @@ This repository contains a lightweight HTML page shown in place of a Stux.Dev se
 - ⚡ Lightweight and fast-loading
 - 🎨 Ready to customize
 - 📱 Responsive design
+- ⚖️ Boring Legal Stuff pages (`legal.html` and `legal/`) and a changelog page (`changelog.html`)
 - 🚀 Deployed at [servicepage.stux.dev](https://servicepage.stux.dev)
 
 ## Getting Started
@@ -25,7 +26,7 @@ This repository contains a lightweight HTML page shown in place of a Stux.Dev se
    git clone https://github.com/StuxDev/servicepage.git
    ```
 
-2. Open `index.html` in your browser or deploy to your hosting provider
+2. Run `./dev-server.sh [port]` (or `dev-server.bat [port]` on Windows) and open `http://127.0.0.1:8000`, or deploy to your hosting provider
 
 ## Customization
 
@@ -51,7 +52,7 @@ This project uses [Date Versioning](https://datevers.ing): each release is numbe
 
 ## License
 
-This project is open source and available for use and modification.
+This project is open source and available for use and modification. Copyright © 2026 Stux.Group.
 
 ---
 

@@ -4,6 +4,12 @@ All notable changes to Stux.Dev Servicepage are documented here.
 
 Each release's sections come in this order: Added, Changed, Fixed, Removed, Security, Deprecated. This project uses [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.11.13
+
+### Changed
+
+- The Imprint page gives Stux Group Ltd's new registered office, 124 City Road, London, EC1V 2NX, England, United Kingdom, instead of 82a James Carter Road, Mildenhall, England, IP28 7DE. The company number (13160574) and "registered in England and Wales" are unchanged.
+
 ## v26.11.06-1
 
 ### Added

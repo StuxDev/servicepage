@@ -4,6 +4,22 @@ All notable changes to Stux.Dev Servicepage are documented here.
 
 Each release's sections come in this order: Added, Changed, Fixed, Removed, Security, Deprecated. This project uses [Date Versioning](https://datevers.ing) since v26.10.23 (`YY.MM.DD`, the UTC release date, with `-1`, `-2`… for later releases the same day); earlier releases used [Semantic Versioning](https://semver.org/).
 
+## v26.11.15-1
+
+### Changed
+
+- Releases go live through a `staging` branch: `test` → `staging` → `main`, each step a pull request reviewed and merged by Leo. Nothing is pushed to `staging` or `main` directly. `commit.sh` / `commit.bat` now refuse to run on `staging` or `main`, and after tagging they print the push command and both `gh pr create` commands. CONTRIBUTING has a "Branches and going live" section, the README's Versioning section says so, and CI also runs on `staging` (deploys stay on `main`).
+
+## v26.11.15
+
+### Added
+
+- `dev-server.sh`/`.bat` take `--lan`, so the site can be opened from a phone or another device on the local network: it listens on all interfaces (`0.0.0.0`) instead of `127.0.0.1` only, and prints the addresses to open, one per IPv4 address (usually the `192.168.x.x` one). Without it the server stays on `127.0.0.1`. The README and CONTRIBUTING describe it.
+
+### Fixed
+
+- `dev-server.sh`/`.bat` called themselves "Soonpage" in their header comments.
+
 ## v26.11.13
 
 ### Changed

@@ -26,7 +26,7 @@ This repository contains a lightweight HTML page shown in place of a Stux.Dev se
    git clone https://github.com/StuxDev/servicepage.git
    ```
 
-2. Run `./dev-server.sh [port]` (or `dev-server.bat [port]` on Windows) and open `http://127.0.0.1:8000`, or deploy to your hosting provider
+2. Run `./dev-server.sh [port] [--lan]` (or `dev-server.bat [port] [--lan]` on Windows) and open `http://127.0.0.1:8000`, or deploy to your hosting provider. Add `--lan` to open it from a phone or another device on your local network: it listens on all interfaces instead of `127.0.0.1` only, and prints the addresses to open (usually the `192.168.x.x` one; allow PHP or Python through the firewall if asked).
 
 ## Customization
 

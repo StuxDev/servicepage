@@ -26,7 +26,7 @@ This repository contains a lightweight HTML page shown in place of a Stux.Dev se
    git clone https://github.com/StuxDev/servicepage.git
    ```
 
-2. Run `./dev-server.sh [port]` (or `dev-server.bat [port]` on Windows) and open `http://127.0.0.1:8000`, or deploy to your hosting provider
+2. Run `./dev-server.sh [port] [--lan]` (or `dev-server.bat [port] [--lan]` on Windows) and open `http://127.0.0.1:8000`, or deploy to your hosting provider. Add `--lan` to open it from a phone or another device on your local network: it listens on all interfaces instead of `127.0.0.1` only, and prints the addresses to open (usually the `192.168.x.x` one; allow PHP or Python through the firewall if asked).
 
 ## Customization
 
@@ -50,7 +50,7 @@ Every page except the 404 page carries a Discord link preview (a `discord:compon
 
 This project uses [Date Versioning](https://datevers.ing): each release is numbered by its UTC release date as `YY.MM.DD` (for example `26.10.23`), with `-1`, `-2`… for later releases the same day. See [CHANGELOG.md](CHANGELOG.md) for what changed in each release.
 
-Work happens on the `test` branch, and changes reach `main` only through a pull request from `test`. Release commits and tags are made on `test` (`git push origin test --tags`) and go live when that pull request is merged.
+Work and releases happen on the `test` branch. Changes reach `staging` and then `main` (live) only through pull requests: `test` → `staging` → `main`. Release commits and tags are made on `test` (`git push origin test --tags`) and go live when the `staging` → `main` pull request is merged.
 
 ## License
 
